@@ -1,6 +1,7 @@
 body {margin:0;}
 
 ul.menu {
+    z-index: 5;
     list-style-type: none;
     margin-left:auto;
     padding-right: 100px;
@@ -16,7 +17,7 @@ li.menu {
     float: left;
 }
 
-li.menu a {
+ a li.menu  {
     display:inline-block;
     color: white;
     text-align: center;
@@ -24,13 +25,15 @@ li.menu a {
     text-decoration: none;
 }
 
-li.menu a:hover:not(.active) {
+ a:hover:not(.active) li.menu  {
     background-color: #303F9F;
 }
 
 .active {
    
-    background-color: #607D8B;
+    background: url('gs.png');
+   
+   
 }
   
             #footer {

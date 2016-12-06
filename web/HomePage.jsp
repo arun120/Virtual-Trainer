@@ -13,10 +13,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<title>Home</title>
-		<meta name="description" content="Perspective Page View Navigation: Transforms the page in 3D to reveal a menu" />
-		<meta name="keywords" content="3d page, menu, navigation, mobile, perspective, css transform, web development, web design" />
-		<meta name="author" content="Codrops" />
+
 		<link rel="shortcut icon" href="../favicon.ico">
+                 <link rel="stylesheet" href="css/form.css">
+                
+                   
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -52,11 +53,11 @@
 						<div class="column">
 							<nav class="codrops-demos">
                                  <ul class="menu" >
-                                <li class="menu"><a class="active" href=""><p>HOME</p></a></li>
-                                <li  id="showMenu" class="menu customer"><a href=""><p>CUSTOMER</p></a></li>
-                                <li class="menu"><a href="" ><p id="">ADD EXERCISE</p></a></li>
-                                <li id="showMenu1" class="menu routine"><a href=""><p >ROUTINE</p></a></li>
-                                <li  class="menu"><a href=""><p >PAYMENT</p></a></li>
+                                <a  href="HomePage.jsp"><li class="menu active" ><p>HOME</p></li></a>
+                                <a href=""><li  id="showMenu" class="menu customer"><p>CUSTOMER</p></li></a>
+                                <a href="video_upload.jsp" ><li class="menu"><p id="">ADD EXERCISE</p></li></a>
+                                <a href=""><li id="showMenu1" class="menu routine"><p >ROUTINE</p></li></a>
+                                <a href="asda"><li  class="menu"><p >PAYMENT</p></li></a>
 
                                 </ul>
 								
@@ -70,9 +71,9 @@
             
             
 					</div><!-- /main -->
-                                        <div style="margin-top: -225px;">
+                                         <div style="position: relative;top: -125px;">
            
-                                            <section>
+                                            <section style="height: 100%;">
                                                 
                                                    <h1>Hello World!</h1>
         <%
@@ -97,8 +98,6 @@
 
              
      
-   
-<div id="footer">
-</div>
+ 
 	</body>
 </html>

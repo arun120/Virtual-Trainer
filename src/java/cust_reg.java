@@ -79,6 +79,7 @@ public class cust_reg extends HttpServlet {
         user.setFather(request.getParameter("father"));
         user.setName(request.getParameter("name"));
         user.setOcc(request.getParameter("occupation"));
+        user.setAddress(request.getParameter("address"));
         
         Createuser cu=new Createuser();
         if(cu.create(user.getUsername(), pass)==1)
@@ -113,13 +114,13 @@ public class cust_reg extends HttpServlet {
         h2.setDiabetes(request.getParameter("diabetes"));
         h2.setEpilepsy(request.getParameter("epilepsy"));
         h2.setFainting(request.getParameter("fainting"));
-        h2.setHeart_att(request.getParameter("attack"));
-        h2.setHeart_dis(request.getParameter("heart_dis"));
+        h2.setHeart_att(request.getParameter("heart"));
+        h2.setHeart_dis(request.getParameter("heart"));
         h2.setHeart_murmur(request.getParameter("murmur"));
         h2.setOedema(request.getParameter("oedema"));
         h2.setPalpitations(request.getParameter("palpitations"));
         h2.setPneumonia(request.getParameter("pneumonia"));
-        h2.setRec_surgery(request.getParameter("rec_surgery"));
+        h2.setRec_surgery(request.getParameter("surgery"));
         h2.setSeizure(request.getParameter("seizures"));
         h2.setShort_breath(request.getParameter("short"));
         h2.setTachycardia(request.getParameter("tachycardia"));
