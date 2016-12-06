@@ -1,0 +1,115 @@
+/*@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);*/
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+
+	font-weight: 300;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: #ed815;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #e86a32;
+	outline: none;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+
+
+/* To Navigation Style */
+
+
+
+
+.column {
+	float: left;
+	width: 50%;
+	padding: 0 2em;
+	min-height: 300px;
+	position: relative;
+	text-align: right;
+}
+
+
+
+.column p {
+	font-weight: 300;
+	font-size: 2em;
+	padding: 0 0 0.5em;
+	margin: 0;
+	line-height: 1;
+}
+
+
+
+.related {
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 3em;
+	clear: both;
+	padding: 3em 0;
+}
+
+.related a {
+	font-weight: 700;
+	font-size: 0.9em;
+}
+
+@media screen and (max-width: 46.0625em) {
+
+	.codrops-header {
+		margin-bottom: 0;
+		padding-bottom: 1em;
+	}
+
+	.column {
+		width: 100%;
+		min-width: auto;
+		min-height: 0;
+		padding: 2em; 
+		text-align: center;
+	}
+
+	.column p {
+		font-size: 1.5em;
+	}
+
+	.column:nth-child(2) {
+		text-align: center;
+		box-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+	}
+}
+
+@media screen and (max-width: 25em) {
+
+	.codrops-header {
+		font-size: 80%;
+	}
+
+	.codrops-top {
+		font-size: 120%;
+	}
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}
