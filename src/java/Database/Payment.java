@@ -12,13 +12,22 @@ import java.sql.Date;
  */
 public class Payment {
     String username;
+    String name;
     Date start;
+
+   
     Date end;
     String discount;
     String usage;
     String pay;
 
-   
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     public String getUsername() {
         

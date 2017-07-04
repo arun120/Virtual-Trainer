@@ -48,6 +48,14 @@
         <servlet-name>AndroidDelVideo</servlet-name>
         <servlet-class>AndroidDelVideo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentUpdate</servlet-name>
+        <servlet-class>PaymentUpdate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Exercises</servlet-name>
+        <servlet-class>Ajax.Exercises</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login_servlet</servlet-name>
         <url-pattern>/Login_servlet</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>AndroidDelVideo</servlet-name>
         <url-pattern>/AndroidDelVideo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentUpdate</servlet-name>
+        <url-pattern>/PaymentUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Exercises</servlet-name>
+        <url-pattern>/Exercises</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

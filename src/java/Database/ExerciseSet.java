@@ -14,6 +14,15 @@ public class ExerciseSet {
     String videoId;
     String setId;
     String prio;
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getVideoId() {
         return videoId;

@@ -1,12 +1,4 @@
 <%-- 
-    Document   : Cust_view
-    Created on : Feb 13, 2016, 9:42:43 AM
-    Author     : Lenovo
---%>
-<%@page import="Database.Health_2"%>
-<%@page import="Database.Health_1"%>
-<%@page import="Database.Personal"%>
-<%-- 
     Document   : HomePage
     Created on : 28 Jan, 2016, 5:15:19 PM
     Author     : Home
@@ -45,7 +37,38 @@
        
           
       </script>
-       
+        <script  type="text/javascript" lang="javascript">
+             
+             $(document).ready(function(){
+                 
+        $.get('CurrentSet',function(response){
+                        $.each(response,function(index,value){
+                            $('<option>').val(value.setid).text(value.name).appendTo("#current");
+                        });
+                    });
+                    
+                    
+                 $(document).on("keyup","#cust",function(){
+                       var lst="";
+                        var custid=$(this).val();
+                        if(custid!=="")
+                        $.get('CustomerId',{cust:custid},function(response){
+                           
+                            $.each(response,function(index,value){
+                                lst=lst+"<div class='rem'>"+value+"</div>";
+                                $('#clist').html(lst);
+                                $('#clist').show();
+                            });
+                        });
+        
+                 });
+                 
+                 $(document).on("click",".rem",function(){
+                     $("#cust").val(($(this).text()));
+                     $("#clist").hide();
+                 });
+             });
+         </script>
         </head>
 	<body >
 		<div id="perspective" class="perspective effect-laydown" >
@@ -62,10 +85,10 @@
 							<nav class="codrops-demos">
                                  <ul class="menu" >
                                 <a  href="HomePage.jsp"><li class="menu " ><p>HOME</p></li></a>
-                                <a href=""><li  id="showMenu" class="menu customer active"><p>CUSTOMER</p></li></a>
+                                <a href=""><li  id="showMenu" class="menu customer"><p>CUSTOMER</p></li></a>
                                 <a href="video_upload.jsp" ><li class="menu"><p id="">ADD EXERCISE</p></li></a>
                                 <a href=""><li id="showMenu1" class="menu routine"><p >ROUTINE</p></li></a>
-                                <a href="payment.jsp"><li  class="menu"><p >PAYMENT</p></li></a>
+                                <a href="payment.jsp"><li  class="menu active"><p >PAYMENT</p></li></a>
 
                                 </ul>
 								
@@ -82,29 +105,15 @@
                                          <div style="position: relative;top: -125px;">
            
                                             <section style="height: 100%;">
-                                                  <form id="msform" method="get" action="Cust_view_Servlet" >
+                                                
+    <form id="msform" method="post" action="PaymentUpdate" >
                                                       <fieldset>
-        <input type="text" name="username" value="User_Id">
+       user id <input type="text" id="cust" name="username" value="">
+        <input type="date" name="date" >
         <input type="submit" value="Submit">
    
             </fieldset>
-        </form>
-     
-        <%
-            Personal p=new Personal();
-            Health_1 h1=new Health_1();
-            Health_2 h2=new Health_2();
-            
-            if(request.getAttribute("personal")!=null){
-            p=(Personal)request.getAttribute("personal");
-            h1=(Health_1) request.getAttribute("health1");
-            h2=(Health_2) request.getAttribute("health2");
-            
-            request.getAttribute("health1");
-              out.print(p.getAge());
-            }
-
-            %>
+    </form>
                                             </section>
                                             
             </div>

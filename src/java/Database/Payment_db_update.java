@@ -33,9 +33,8 @@ public class Payment_db_update {
                 stmt = conn.createStatement();
                 String sql;
                 
-               sql="update payment set srt_date'"+p.getStart()+"',end_date='"+p.getEnd()+
-                       "',dis_type='"+p.getDiscount()+"',use_type='"+p.getUsage()+
-                       "',pay_type='"+p.getPay()+"' where username='"+p.getUsername()+"';";
+               sql="update payment set end_date='"+p.getEnd()+
+                       "' where username='"+p.getUsername()+"';";
                
                update=stmt.executeUpdate(sql);
                 

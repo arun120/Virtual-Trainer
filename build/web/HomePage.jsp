@@ -4,6 +4,13 @@
     Author     : Home
 --%>
 
+<%@page import="Database.Payment"%>
+<%@page import="Database.Payment_db"%>
+<%@page import="java.util.Date"%>
+<%@page import="Database.SetNamesDb"%>
+<%@page import="Database.SetList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -33,11 +40,37 @@
           }
       </style>
       
-      <script lang="text/javascript" src="js/submenu.js">
+      <script lang="text/javascript" src="js/submenu.js"></script>
        
+      <script>
+      
+      $(document).ready(function(){
+          $("#setid").on('change keyup',function(){
+              
+             var data=$(this).val();
+             //console.log(data);
+             
+             $.get('Exercises',{
+                 setid: data
+             },function(response){
+               var output="<br>";
+                $.each(response,function(index,value){
+                    
+                    output+=value.name+"<br>";
+                });
+                
+               
+                console.log(output);
+                $("#exercise").html(output);
+                
+                 
+                 
+             });
+          });
           
+      });
+      
       </script>
-       
         </head>
 	<body >
 		<div id="perspective" class="perspective effect-laydown" >
@@ -57,7 +90,7 @@
                                 <a href=""><li  id="showMenu" class="menu customer"><p>CUSTOMER</p></li></a>
                                 <a href="video_upload.jsp" ><li class="menu"><p id="">ADD EXERCISE</p></li></a>
                                 <a href=""><li id="showMenu1" class="menu routine"><p >ROUTINE</p></li></a>
-                                <a href="asda"><li  class="menu"><p >PAYMENT</p></li></a>
+                                <a href="payment.jsp"><li  class="menu"><p >PAYMENT</p></li></a>
 
                                 </ul>
 								
@@ -80,6 +113,59 @@
    String abc=session.getAttribute("username").toString();
    out.write(abc);
        %>
+       
+       <style>
+           .boxdiv{
+               width:500px; 
+               height: 200px;
+               background-color: white;
+               position: relative;
+               display: flex;
+               margin: 10px;
+               border-radius: 5px;
+               -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
+              
+           }
+   
+       </style>
+       <div class="boxdiv">
+           
+           <form id="msform">
+               <br>
+               <select id="setid">
+                   <option value="#">Select</option>
+                   <%
+                   List<SetList> list=new ArrayList<>();
+                   list=new SetNamesDb().request();
+                   for(SetList s:list){
+                   %>
+                   <option value="<%= s.getSetid() %>"><%= s.getName() %></option>
+                   <%
+                   }
+                   %>
+               </select>
+               
+           </form>
+       
+               <div id="exercise"></div>
+       
+       </div>
+               
+               <div class="boxdiv">div2
+               
+               <%
+                   String today=(new Date().getYear()+1900)+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate();
+                   //out.write(today);
+                   for(Payment p:Payment_db.getLapsed(today)){
+               %>
+               <%=p.getName()+" "+p.getUsername()+p.getEnd()%><br>
+               <%
+                   }
+                %>
+               </div>
+               
+               <div class="boxdiv">div3</div>
+               
                                             </section>
                                             
             </div>
