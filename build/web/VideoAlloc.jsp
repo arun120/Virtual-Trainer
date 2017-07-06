@@ -74,10 +74,12 @@
        
           
       </script>
-       
+       <link rel="stylesheet" type="text/css" href="css/style_1.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
         </head>
 	<body >
-		<div id="perspective" class="perspective effect-laydown" >
+		<div id="perspective" class="perspective effect-laydown" style="position: relative;top: -10px;" >
 			<div class="container" >
 				<div class="wrapper" ><!-- wrapper needed for scroll -->
 					<!-- Top Navigation -->
@@ -108,20 +110,41 @@
             
             
 					</div><!-- /main -->
-                                         <div style="position: relative;top: -125px;">
-           
-                                            <section style="height: 100%;">
-                                                <form id="msform" method="post" action="VideoAllocServlet">
-                                                    <fieldset>
-            Cust_Id: <input type="text" id="cust" name="custid"><br>
-            <div id="clist"></div>
-            Set_id:   <select  id="current" name="setid"></select><br>
-            <input type="submit" value="Submit"><br>
-                                                    </fieldset>
-        </form>
-                                            </section>
+                                     <br><br><br><br>   
+                                        
+                    <div class="form-area" >
+                                         <div style="position: relative;top: -100px;">
+                                             <br><br><br><br><br><br>
+                                              
+            <form class="form-signin" style="">       
+        <center><h2>VIDEO ALLOCATION</h2></center>
+        <br>
+        <label>CUST ID :</label>
+        <input style="width:50%; margin-top:-40px;margin-left:65px;" id="cust" type="text" class="form-control" name="custid" placeholder="" required="" autofocus="" />
+       <div id="clist"></div>
+        <br>
+         
+             <br>
+      
+    <div class="select">
+        
+
+            <label>SET ID :
+   </label>
+           <select  style="margin-left:80px; width:49%;" id="current" name="setid">
+            
+        </select>
+      <div class="select__arrow"></div>
+    </div>
+        <br>
+        <center>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="upload">SUBMIT</button>  </center>
+
+    </form>
+                                         
                                             
-            </div>
+                                         </div></div>
+                                        
 				</div><!-- wrapper -->
 		</div><!-- /container -->
 

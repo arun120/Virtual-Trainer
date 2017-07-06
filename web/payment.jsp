@@ -69,9 +69,15 @@
                  });
              });
          </script>
+         
+         
+         <link rel="stylesheet" type="text/css" href="css/style_1.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
+        
         </head>
 	<body >
-		<div id="perspective" class="perspective effect-laydown" >
+		<div id="perspective" class="perspective effect-laydown" style="position: relative;top: -10px;" >
 			<div class="container" >
 				<div class="wrapper" ><!-- wrapper needed for scroll -->
 					<!-- Top Navigation -->
@@ -105,14 +111,17 @@
                                          <div style="position: relative;top: -125px;">
            
                                             <section style="height: 100%;">
-                                                
-    <form id="msform" method="post" action="PaymentUpdate" >
-                                                      <fieldset>
-       user id <input type="text" id="cust" name="username" value="">
-        <input type="date" name="date" >
-        <input type="submit" value="Submit">
+                                                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                                <form  class="form-signin" method="post" action="PaymentUpdate" >
+                                                     <center><h2 class="form-signin-heading">PAYMENT UPDATE</h2></center>
+       <label>Username  :</label> <input type="text" id="cust" name="username" value="">
+       <div id="clist"></div>
+       <br><br>
+        <label>Renewed Till :</label><input type="date" name="date" >
+        
+        <br><br>
+        <center>   <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">SUBMIT</button>   </center>
    
-            </fieldset>
     </form>
                                             </section>
                                             

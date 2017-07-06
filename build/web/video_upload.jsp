@@ -67,7 +67,7 @@
     var newTextBoxDiv = $(document.createElement('div'));
 	     
                 
-	newTextBoxDiv.after().html('<select name="exceptions'+counter+'" id="exceptions">'+
+	newTextBoxDiv.after().html('<select style=" width:50%;height:50%;margin-left:125px;" name="exceptions'+counter+'" id="exceptions">'+
                 '<option value="Empty" >Select</option>'+
                 '<% for(String val:exceptions) { %>'+
            ' <option value="<%=val%>"><%out.write(val);%></option>'+
@@ -86,9 +86,14 @@
 
             });
          </script>
+         
+         <link rel="stylesheet" type="text/css" href="css/style_1.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
+        
         </head>
 	<body >
-		<div id="perspective" class="perspective effect-laydown" >
+		<div id="perspective" class="perspective effect-laydown" style="position: relative;top: -10px;" >
 			<div class="container" >
 				<div class="wrapper" ><!-- wrapper needed for scroll -->
 					<!-- Top Navigation -->
@@ -120,7 +125,7 @@
             
             
 					</div><!-- /main -->
-                                        <div style="position: relative;top: -125px;">
+                                        <div style="position: relative;top: -175px;">
            
                                             <section>
                                                 
@@ -128,32 +133,18 @@
    String abc=session.getAttribute("username").toString();
    
        %>
-       
-        <form id="msform" method="post" action="Video_upload_Servlet" enctype="multipart/form-data">
-            <fieldset>
-       Name: <input type="text" name="vname">
-       <br>
-       Description:<textarea rows="5" cols="35" name="des" value="Description"></textarea>
-        
+       <br><br><br><br><br><br><br><br><br>
+       <form class="form-signin" method="post" action="Video_upload_Servlet" enctype="multipart/form-data">       
+     <center><h2 class="form-signin-heading">VIDEO UPLOAD</h2></center>
         <br>
+        <label>NAME :</label><input style="width:50%; margin-top:-40px;margin-left:75px;" type="text" class="form-control" name="vname" placeholder="" required="" autofocus="" />
         <br>
-        <select name="type">
-            <option value="shoulder">shoulder</option>
-             <option value="chest">chest</option>
-              <option value="triceps">triceps</option>
-               <option value="back">back</option>
-                <option value="forearm">forearm</option>
-                 <option value="leg">leg</option>
-                  <option value="abdominal">abdominal</option>
-                   <option value="butt">butt</option>
-                    <option value="others">others</option>
-        </select>
-        <br>
-        <br>
-        
-        <div id="addexceptions">
+         <div class="control-group">
+   
+    <div  class="select">
+       <div id="addexceptions">
             <br>
-            <select name="exceptions1" id="exceptions">
+         <label>EXCEPTION:</label>   <select  style=" width:50%;height:50%;margin-left:30px;"name="exceptions1" id="exceptions">
                 <option value="Empty" >Select</option>
                 <% 
             for(String val:exceptions)
@@ -174,13 +165,47 @@
             </div>
         
         <br>
-        <br>
+      <div class="select__arrow"></div>
+    </div>
+             <br>
+      
+    <div class="select">
         
-        <input type="file" name="file">
+
+            <label>SELECT VIDEO
+   </label>
+           <select name="type" style="margin-left:20px;width:48%;">
+               <option value="shoulder">Select</option>
+            <option value="shoulder">Shoulder</option>
+             <option value="chest">Chest</option>
+              <option value="triceps">Triceps</option>
+               <option value="back">Back</option>
+                <option value="forearm">Forearm</option>
+                 <option value="leg">Leg</option>
+                  <option value="abdominal">Abdominal</option>
+                   <option value="butt">Butt</option>
+                    <option value="others">Others</option>
+        </select>
+      <div class="select__arrow"></div>
+    </div>
+   
+</div>
+               
+     <br>
         <br>
-        <input type="submit" value="Upload"/>
-            </fieldset>
+        <label>CHOOSE FILE</label>
+      <input type="file" name="file" style="margin-top:0px; margin-left:120px;">
+        <br>
+             <br>
+                <label> Description:</label><textarea style="height:100px;"  class="form-control"rows="2" cols="35" name="des" value="Description"></textarea>
+
+            <br><br>
+   <center>   <button class="btn btn-lg btn-primary btn-block" type="submit" value="upload">SUBMIT</button>   </center>
     </form>
+       
+            
+            
+            
                                             </section>
                                             
             </div>

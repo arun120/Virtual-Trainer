@@ -66,15 +66,15 @@
 
                     newTextBoxDiv.after().html('Category: <select id="type' + counter + '" style="width:25%;" >' +
                             '<option value="Empty" selected>Select</option>' +
-                            '<option value="shoulder">shoulder</option>' +
-                            '<option value="chest">chest</option>' +
-                            '<option value="triceps">triceps</option>' +
-                            '<option value="back">back</option>' +
-                            '<option value="forearm">forearm</option>' +
-                            '<option value="leg">leg</option>' +
-                            '<option value="abdominal">abdominal</option>' +
-                            '<option value="butt">butt</option>' +
-                            '<option value="others">others</option>' +
+                            '<option value="shoulder">Shoulder</option>' +
+                            '<option value="chest">Chest</option>' +
+                            '<option value="triceps">Triceps</option>' +
+                            '<option value="back">Back</option>' +
+                            '<option value="forearm">Forearm</option>' +
+                            '<option value="leg">Leg</option>' +
+                            '<option value="abdominal">Abdominal</option>' +
+                            '<option value="butt">Butt</option>' +
+                            '<option value="others">Others</option>' +
                             '</select>' +
                             'Video: <select class="video" style="width:20%;" name="video' + counter + '" id="video' + counter + '">' +
                             '<option value="Empty" >Select</option>' +
@@ -140,43 +140,8 @@
 
         <link rel="stylesheet" type="text/css" href="css/style_1.css" />
         <link rel="stylesheet" type="text/css" href="css/animate.css" />
-        <style>
-
-            body {
-                background: #eee !important;	
-            }
-
-            .wrapper {	
-                margin-top: 80px;
-                margin-bottom: 80px;
-            }
-
-            .form-signin {
-                max-width: 500px;
-                padding: 15px 35px 45px;
-                margin: 0 auto;
-                background-color: #fff;
-                border: 1px solid rgba(0,0,0,0.1);  
-
-
-
-                input[type="text"] {
-                    margin-bottom: -1px;
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
-                }
-
-                input[type="password"] {
-                    margin-bottom: 20px;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                }
-            }
-
-
-
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
+        
 
     </head>
     <body >
