@@ -108,7 +108,7 @@ return p;
                  h.setExercise(rs.getString("exercise"));
                  h.setOther_med(rs.getString("other_med"));
                  h.setPre_medicine(rs.getString("per_medicine"));
-                 h.setHeart(rs.getString("heart/stroke"));
+                 h.setHeart(rs.getString("heart/stoke"));
                  h.setHbp(rs.getString("high_bp"));
                  
                 }
