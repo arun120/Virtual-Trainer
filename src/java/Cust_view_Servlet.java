@@ -77,7 +77,7 @@ public class Cust_view_Servlet extends HttpServlet {
         request.setAttribute("personal", p);
         request.setAttribute("health1", h1);
         request.setAttribute("health2", h2);
-        
+        //if(p.getAge().contains("a"));
         RequestDispatcher dispatch=request.getRequestDispatcher("Cust_view.jsp");
         dispatch.forward(request, response);
         return;

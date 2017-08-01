@@ -5,6 +5,12 @@
  */
 package Database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Home
@@ -175,6 +181,73 @@ public class Health_2 {
         this.fainting = fainting;
     }
     
+    public static Health_2 getById(String id){
     
+        Health_2 h = null;
+         
+        Dbdetails db=new Dbdetails("gym");
+       Connection conn=null;
+            try
+            {
+                Class.forName(db.getDriver());
+
+
+                conn= DriverManager.getConnection(db.getUrl(), db.getUserName(), db.getPass());
+                Statement stmt=null;
+                stmt = conn.createStatement();
+                String sql;
+                
+               sql="select * from health where username='"+id+"'";
+                       
+                       
+                    
+                       
+            ResultSet rs=stmt.executeQuery(sql);
+            if(rs.next()){
+            h=new Health_2();
+            h.setAllergies(rs.getString("allergies"));
+            h.setAsthma(rs.getString("asthma"));
+            h.setBone_brk(rs.getString("bone_brk"));
+            h.setCheast(rs.getString("cheast_pain"));
+            h.setChildbirth(rs.getString("childbirth"));
+            h.setDiabetes(rs.getString("diabetes"));
+            h.setEpilepsy(rs.getString("epilepsy"));
+            h.setFainting(rs.getString("fainting"));
+            h.setHeart_att(rs.getString("heart_att"));
+            h.setHeart_dis(rs.getString("heart_dis"));
+            h.setHeart_murmur(rs.getString("heart_murmur"));
+            h.setOedema(rs.getString("oedema"));
+            h.setPalpitations(rs.getString("palpitations"));
+            h.setPneumonia(rs.getString("pneumonia"));
+            h.setRec_surgery(rs.getString("rec_surgery"));
+            h.setSeizure(rs.getString("seizure"));
+            h.setShort_breath(rs.getString("short_breath"));
+            h.setTachycardia(rs.getString("tachycardia"));
+            
+           
+            }
+                
+                stmt.close();
+                    
+            }catch(SQLException se)
+            {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally{
+                try{
+                    if(conn!=null)
+                    conn.close();
+                }catch(SQLException se)
+                {
+                    se.printStackTrace();
+                }
+            }
+        
+        return h;
+        
+        
+    }
     
 }

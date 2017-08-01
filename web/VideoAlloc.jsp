@@ -12,6 +12,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+ <%
+            if(session.getAttribute("username")==null)
+            out.write("<script>window.location='index.jsp';</script>");
+            else{
+            %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -96,7 +101,7 @@
                                 <a href=""><li  id="showMenu" class="menu customer"><p>CUSTOMER</p></li></a>
                                 <a href="video_upload.jsp" ><li class="menu"><p id="">ADD EXERCISE</p></li></a>
                                 <a href=""><li id="showMenu1" class="menu routine active"><p >ROUTINE</p></li></a>
-                                <a href="asda"><li  class="menu"><p >PAYMENT</p></li></a>
+                                <a href="payment.jsp"><li  class="menu"><p >PAYMENT</p></li></a>
 
                                 </ul>
 								
@@ -163,3 +168,6 @@
  
 	</body>
 </html>
+<%
+}
+%>

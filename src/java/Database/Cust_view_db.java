@@ -20,7 +20,7 @@ public class Cust_view_db {
        
   public Personal getpersonal(String username)
    {
-       Personal p=new Personal();
+       Personal p=null;
    
        Dbdetails db=new Dbdetails("gym");
        Connection conn=null;
@@ -38,7 +38,7 @@ public class Cust_view_db {
                 rs=stmt.executeQuery(sql);
 
                 if(rs.next()) {
-                    
+                    p=new Personal();
                     p.setUsername(rs.getString("username"));
                     p.setName(rs.getString("name"));
                     p.setAge(rs.getString("age"));
@@ -79,7 +79,7 @@ return p;
 
     public Health_1 gethealth_1(String username)
    {
-       Health_1 h=new Health_1();
+       Health_1 h=null;
        
    
        Dbdetails db=new Dbdetails("gym");
@@ -98,7 +98,7 @@ return p;
                 rs=stmt.executeQuery(sql);
 
                 if(rs.next()) {
-                    
+                 h=new Health_1();   
                  h.setUsername(rs.getString("username"));
                  h.setSurgery(rs.getString("surgery"));
                  h.setBpain(rs.getString("b_pain"));
@@ -141,7 +141,7 @@ return p;
   
     public Health_2 gethealth_2(String username)
    {
-       Health_2 h=new Health_2();
+       Health_2 h=null;
        
    
        Dbdetails db=new Dbdetails("gym");
@@ -160,7 +160,7 @@ return p;
                 rs=stmt.executeQuery(sql);
 
                 if(rs.next()) {
-                    
+                 h=new Health_2();   
                  h.setAllergies(rs.getString("allergies"));
                  h.setAsthma(rs.getString("asthma"));
                  h.setBone_brk(rs.getString("bone_brk"));

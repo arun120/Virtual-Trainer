@@ -1,5 +1,10 @@
 
 <!DOCTYPE html>
+ <%
+            if(session.getAttribute("username")==null)
+            out.write("<script>window.location='index.jsp';</script>");
+            else{
+            %>
 <html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="js/console_runner-4c423e33d523169b92b57376873b654f.js"></script><meta charset="UTF-8"><meta name="robots" content="noindex">
 
         <link rel="stylesheet" href="css/form.css">
@@ -493,3 +498,6 @@
 
         <script src="js/css_live_reload_init.js"></script>
     </body></html>
+<%
+}
+%>

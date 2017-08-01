@@ -15,6 +15,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+ <%
+            if(session.getAttribute("username")==null)
+            out.write("<script>window.location='index.jsp';</script>");
+            else{
+            %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -93,16 +98,16 @@
         <%
            
             Personal p=new Personal();
-            Health_1 h1=new Health_1();
-            Health_2 h2=new Health_2();
+            Health_1 h1;
+            Health_2 h2;
             
             if(request.getAttribute("personal")!=null){
             p=(Personal)request.getAttribute("personal");
             h1=(Health_1) request.getAttribute("health1");
             h2=(Health_2) request.getAttribute("health2");
             
-            request.getAttribute("health1");
-             // out.print(p.getAge());
+           // request.getAttribute("health1");
+           //   out.print(h1.getBpain());
             
             %>
             <div id="page-wrapper" style="margin-left: -50px;">
@@ -121,30 +126,10 @@
                             <div class="user-btm-box">
                                 <!-- .row -->
                                 <div class="row text-center m-t-10">
-                                    <div class="col-md-6 b-r"><strong>Name</strong>
+                                    <div class="col-md-6 b-r"><strong><%=p.getName() %></strong>
                                         <p></p>
                                     </div>
-                                    <div class="col-md-6"><strong> Father NAme</strong>
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                                <hr>
-                                <!-- .row -->
-                                <div class="row text-center m-t-10">
-                                    <div class="col-md-6 b-r"><strong>Email ID</strong>
-                                        <p></p>
-                                    </div>
-                                    <div class="col-md-6"><strong>Phone</strong>
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row text-center m-t-10">
-                                    <div class="col-md-6 b-r"><strong>Age</strong>
-                                        <p></p>
-                                    </div>
-                                    <div class="col-md-6"><strong>Occupatation</strong>
+                                    <div class="col-md-6"><strong> <%=p.getFather() %></strong>
                                         <p></p>
                                     </div>
                                 </div>
@@ -152,7 +137,27 @@
                                 <hr>
                                 <!-- .row -->
                                 <div class="row text-center m-t-10">
-                                    <div class="col-md-12"><strong>Address</strong>
+                                    <div class="col-md-6 b-r"><strong><%=p.getEmail() %></strong>
+                                        <p></p>
+                                    </div>
+                                    <div class="col-md-6"><strong><%=p.getContact() %></strong>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row text-center m-t-10">
+                                    <div class="col-md-6 b-r"><strong><%=p.getAge() %></strong>
+                                        <p></p>
+                                    </div>
+                                    <div class="col-md-6"><strong><%=p.getOcc() %></strong>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                                <hr>
+                                <!-- .row -->
+                                <div class="row text-center m-t-10">
+                                    <div class="col-md-12"><strong><%=p.getAddress() %></strong>
                                         <p></p>
                                     </div>
                                 </div>
@@ -166,19 +171,19 @@
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
                             <div class="row">
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Membership</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong></strong>
                                             <br>
                                             <p class="text-muted"></p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Extras Activity</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong></strong>
                                             <br>
                                             <p class="text-muted"></p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong> choice of Training</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong> </strong>
                                             <br>
                                             <p class="text-muted"></p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6"> <strong>Date of joining</strong>
+                                        <div class="col-md-3 col-xs-6"> <strong></strong>
                                             <br>
                                             <p class="text-muted"></p>
                                         </div>
@@ -188,95 +193,268 @@
                                     <hr>
                                     <p class="m-t-30">
                             
-                            <div class="row">
+                           <div class="row">
         <div class="col-sm-12">
           <div class="white-box">
-            <h3 class="box-title m-b-0">Health Table</h3>
+            <h3 class="box-title m-b-0">Health Issues</h3>
             <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>check</th>
-                    <th class="text-nowrap">Status</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
+                    <%
+                    if(h1.getBpain().equals("y"))
+                    {
+                    %>
                   <tr>
-                    <td>Diabites</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
+                    <td>Back Pain</td>
+                     
                   
                   </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h1.getBreath().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Breathing</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h1.getHbp().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>High Blood Pressure</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                     <%
+                    if(h1.getHeart().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Heart Problems</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h1.getJpain().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Joint Pain</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h1.getLbp().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Low Blood Pressure</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h1.getSurgery().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Had a Surgery</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h2.getAllergies().equals("y"))
+                    {
+                    %>
                   <tr>
                     <td>Allergies</td>
-                     <td><input type="checkbox" name=""></td>
-                <td><div class="label label-table label-success">checked</div></td>
-                   
-                  </tr>
+                 </tr>
+                  <%
+                  }
+                  %>
+                <%
+                    if(h2.getAsthma().equals("y"))
+                    {
+                    %>
                   <tr>
                     <td>Asthma</td>
-                    <td><input type="checkbox" name=""></td>
-        <td><div class="label label-table label-success">checked</div></td>
-                   
-                  </tr>
-                    <tr>
-                    <td>Diabites</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>High Blood Pressure</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>Low Blood Pressure</td>
-                     <td><input type="checkbox" name=""></td>
-                        <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>Back Bone pain</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>Diabites</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                  
-                    <tr>
+                 </tr>
+                  <%
+                  }
+                  %>
+                  <%
+                    if(h2.getBone_brk().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Broken Bone</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getCheast().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Chest Pain</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getChildbirth().equals("y"))
+                    {
+                    %>
+                  <tr>
                     <td>Recent Child Birth</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>Heart Disease</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                    <tr>
-                    <td>Taking Medicine</td>
-                     <td><input type="checkbox" name=""></td>
-                    <td><div class="label label-table label-success">checked</div></td>
-                  
-                  </tr>
-                 
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getDiabetes().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Diabetes</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getEpilepsy().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Epilepsy</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getFainting().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Fainting</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getHeart_att().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Heart Attack</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getHeart_dis().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Heart Disorder</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getHeart_murmur().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Heart Murmur</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getOedema().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Oedema</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getPalpitations().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Palpitations</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getPneumonia().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Pneumonia</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getSeizure().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Seizure</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getShort_breath().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Short Breath</td>
+                 </tr>
+                  <%
+                  }
+                  %>
+                   <%
+                    if(h2.getTachycardia().equals("y"))
+                    {
+                    %>
+                  <tr>
+                    <td>Tachycardia</td>
+                 </tr>
+                  <%
+                  }
+                  %>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-
+ 
 
 
 
@@ -317,3 +495,6 @@
  
 	</body>
 </html>
+<%
+}
+%>

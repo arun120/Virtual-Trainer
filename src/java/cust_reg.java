@@ -158,7 +158,9 @@ public class cust_reg extends HttpServlet {
                
                       if(db.register(user,h1,h2,t,ct)==1)
         {
-            response.getWriter().print(user.getContact());
+            response.setContentType("text/html");
+            response.getWriter().print("<script>alert('Registerd Successfully');window.location='HomePage.jsp'; </script>");
+            
             
         }
  

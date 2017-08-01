@@ -11,7 +11,15 @@ and open the template in the editor.
     
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>bakabakagym| Home ::st.joseph's instute</title>
+	<title>Gym| Home</title>
+         <%
+        HttpSession newsession = request.getSession(false);
+    if (newsession != null) 
+    {
+         newsession.invalidate();
+
+    }
+    %>
 		<meta charset="utf-8">
 		<link href="./css/style.css" rel="stylesheet" type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">

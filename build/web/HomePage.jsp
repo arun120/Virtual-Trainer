@@ -14,8 +14,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+ <%
+            if(session.getAttribute("username")==null)
+            out.write("<script>window.location='index.jsp';</script>");
+            else{
+            %>
 <html lang="en" class="no-js">
 	<head>
+           
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -110,8 +116,8 @@
                                                 
                                                    <h1>Hello World!</h1>
         <%
-   String abc=session.getAttribute("username").toString();
-   out.write(abc);
+   String username=session.getAttribute("username").toString();
+   out.write(username);
        %>
        
        <style>
@@ -158,7 +164,7 @@
                    //out.write(today);
                    for(Payment p:Payment_db.getLapsed(today)){
                %>
-               <%=p.getName()+" "+p.getUsername()+p.getEnd()%><br>
+               <%=p.getName()+" "+p.getUsername()+" "+p.getEnd()%><br>
                <%
                    }
                 %>
@@ -187,3 +193,6 @@
  
 	</body>
 </html>
+<%
+}
+%>

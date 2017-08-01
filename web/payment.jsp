@@ -7,6 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+ <%
+            if(session.getAttribute("username")==null)
+            out.write("<script>window.location='index.jsp';</script>");
+            else{
+            %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -144,3 +149,7 @@
  
 	</body>
 </html>
+
+<%
+}
+%>

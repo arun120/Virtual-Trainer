@@ -5,6 +5,12 @@
  */
 package Database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Home
@@ -112,5 +118,61 @@ public class Health_1 {
         this.other_med = other_med;
     }
     
+    public static Health_1 getById(String id){
     
+        Health_1 h = null;
+         
+        Dbdetails db=new Dbdetails("gym");
+       Connection conn=null;
+            try
+            {
+                Class.forName(db.getDriver());
+
+
+                conn= DriverManager.getConnection(db.getUrl(), db.getUserName(), db.getPass());
+                Statement stmt=null;
+                stmt = conn.createStatement();
+                String sql;
+                
+               sql="select * from health where username='"+id+"'";
+                       
+                       
+                      
+                       
+            ResultSet rs=stmt.executeQuery(sql);
+            if(rs.next()){
+            h=new Health_1();
+            h.setBpain(rs.getString("b_pain"));
+            h.setBreath(rs.getString("breath"));
+            h.setExercise(rs.getString("exercise"));
+            h.setHbp(rs.getString("high_bp"));
+            h.setLbp(rs.getString("low_bp"));
+            h.setOther_med(rs.getString("other_med"));
+            h.setPre_medicine(rs.getString("per_medicine"));
+            h.setSurgery(rs.getString("surgery"));
+            h.setUsername(id);
+            }
+                
+                stmt.close();
+                    
+            }catch(SQLException se)
+            {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally{
+                try{
+                    if(conn!=null)
+                    conn.close();
+                }catch(SQLException se)
+                {
+                    se.printStackTrace();
+                }
+            }
+        
+        return h;
+        
+        
+    }
 }
