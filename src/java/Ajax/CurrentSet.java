@@ -5,9 +5,13 @@
  */
 package Ajax;
 
+import Database.ExerciseSetDb;
+import Database.History;
+import Database.HistoryDb;
 import Database.Login_db;
 import Database.SetList;
 import Database.SetNamesDb;
+import Database.VideoAllocDb;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,13 +69,16 @@ public class CurrentSet extends HttpServlet {
       //  processRequest(request, response);
         String cust=request.getParameter("cust");
         SetNamesDb db=new SetNamesDb();
-        List<SetList> set=db.request();
+        List<History> list;
         String json=null;
         
-    
+        String setid=VideoAllocDb.getAllocation(cust);
+        int size=ExerciseSetDb.getExercises(setid).size();
+        
+        list=HistoryDb.getHistory(cust, setid);
         response.setContentType("application/json");
-        json=new Gson().toJson(set);
-        response.getWriter().write(json);
+        json=new Gson().toJson(list);
+        response.getWriter().write(json.replace("]", ",{ \"size\": \" "+size +" \" }]"));
     }
 
     /**

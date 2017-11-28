@@ -7,6 +7,7 @@ package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -58,5 +59,52 @@ public class VideoAllocDb {
             }
 
 return update;
+   }
+       
+       public static  String getAllocation(String custid){
+       
+       Dbdetails db=new Dbdetails("gym");
+       Connection conn=null;
+       String res=null;
+            try
+            {
+                Class.forName(db.getDriver());
+
+
+                conn= DriverManager.getConnection(db.getUrl(), db.getUserName(), db.getPass());
+                Statement stmt=null;
+                stmt = conn.createStatement();
+                String sql;
+                
+               
+                
+                sql="select * from video_alloc where cust_id like '"+custid+"'";
+                
+                ResultSet rs=stmt.executeQuery(sql);
+                 while(rs.next())
+                  
+                {
+                    res=rs.getString("set_id");
+                    
+                }
+                stmt.close();
+                    
+            }catch(SQLException se)
+            {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally{
+                try{
+                    if(conn!=null)
+                    conn.close();
+                }catch(SQLException se)
+                {
+                    se.printStackTrace();
+                }
+            }
+
+   return res;
    }
 }

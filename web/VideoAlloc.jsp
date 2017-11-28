@@ -121,7 +121,7 @@
                                          <div style="position: relative;top: -100px;">
                                              <br><br><br><br><br><br>
                                               
-            <form class="form-signin" style="">       
+                                             <form class="form-signin" style="" action="VideoAllocServlet" method="post">       
         <center><h2>VIDEO ALLOCATION</h2></center>
         <br>
         <label>CUST ID :</label>

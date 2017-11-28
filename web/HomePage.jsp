@@ -51,6 +51,66 @@
       <script>
       
       $(document).ready(function(){
+          
+          $(document).on("keyup","#cust",function(){
+                       var lst="";
+                        var custid=$(this).val();
+                        if(custid!=="")
+                        $.get('CustomerId',{cust:custid},function(response){
+                           
+                            $.each(response,function(index,value){
+                                lst=lst+"<div class='rem'>"+value+"</div>";
+                                $('#clist').html(lst);
+                                $('#clist').show();
+                            });
+                        });
+        
+                 });
+                 $(document).on("click",".rem",function(){
+                     $("#cust").val(($(this).text()));
+                     $("#clist").hide();
+                     
+                     $.get('CurrentSet',{
+                 cust :$(this).text()
+                 
+             },function(response){
+                // console.log(response);
+               var output="<br>";
+               
+               var completed=0;
+               var partial=0;
+               var skip=0;
+               var notattempted=0;
+               var totalVideo=0;
+                $.each(response,function(index,value){
+                    //console.log(value);
+                    if(typeof value.size === 'undefined'){
+                    output+=value+"<br>";
+                    if(value.status==='partial')
+                        partial++;
+                    else if(value.status==='completed')
+                        completed++;
+                    else
+                        skip++;
+                        
+                }
+                else{
+                    totalVideo=value.size;
+                    
+                }
+                    
+                });
+                
+               
+                console.log(output);
+               // $("#exercise").html(output);
+                
+                 
+                notattempted=totalVideo-partial-completed-skip;
+                    console.log(partial/totalVideo +" "+completed/totalVideo +" "+skip/totalVideo + " "+ notattempted/totalVideo ); 
+             });
+                 });
+                 
           $("#setid").on('change keyup',function(){
               
              var data=$(this).val();
@@ -157,7 +217,7 @@
        
        </div>
                
-               <div class="boxdiv">div2
+               <div class="boxdiv" style="overflow-y: auto">div2
                
                <%
                    String today=(new Date().getYear()+1900)+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate();
@@ -170,7 +230,13 @@
                 %>
                </div>
                
-               <div class="boxdiv">div3</div>
+               <div class="boxdiv">div3
+                   <form>
+               <label>CUST ID :</label>
+        <input  id="cust" type="text"  name="custid" placeholder="" required="" autofocus="" />
+       <div id="clist"></div>
+                   </form>
+               </div>
                
                                             </section>
                                             
