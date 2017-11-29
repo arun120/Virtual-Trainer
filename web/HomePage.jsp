@@ -34,6 +34,7 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
+                
 		<!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
 		<script src="js/modernizr.custom.25376.js"></script>
                 <script src="jQuery/jquery-2.2.2.js"></script>
@@ -119,7 +120,7 @@
              $.get('Exercises',{
                  setid: data
              },function(response){
-               var output="<br>";
+               var output="<br><h4>Exercises</h4>";
                 $.each(response,function(index,value){
                     
                     output+=value.name+"<br>";
@@ -174,31 +175,37 @@
            
                                             <section style="height: 100%;">
                                                 
-                                                   <h1>Hello World!</h1>
+                                                   
         <%
    String username=session.getAttribute("username").toString();
-   out.write(username);
+   
        %>
        
        <style>
            .boxdiv{
-               width:500px; 
+               width:40%; 
+             
                height: 200px;
                background-color: white;
                position: relative;
                display: flex;
                margin: 10px;
-               border-radius: 5px;
+               border-radius: 2px;
                -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
               
            }
    
        </style>
-       <div class="boxdiv">
-           
-           <form id="msform">
-               <br>
-               <select id="setid">
+       
+       <div style="display: flex;margin: 10px;width: 100%; height: 200px;justify-content: center;">
+        <div class="boxdiv">
+            <div style="width: 60%;height: 50px;margin-left: 5px;">
+                <h3 >Routine Details</h3>
+                
+                
+           <form style="margin-left: 5px;">
+               
+               <label>Routine :</label> <select id="setid">
                    <option value="#">Select</option>
                    <%
                    List<SetList> list=new ArrayList<>();
@@ -213,31 +220,66 @@
                
            </form>
        
-               <div id="exercise"></div>
-       
+               
        </div>
                
-               <div class="boxdiv" style="overflow-y: auto">div2
+               <div id="exercise" style="overflow-y: auto;"></div>
+           
+        </div>
                
+               <div class="boxdiv"  style="overflow-y: auto;display: block;margin-left: 100px;">
+                  
+                   <h3>&nbsp;&nbsp;&nbsp;Pending Payments</h3>
+                   <hr>
+                   <table style="width: 100%">
+                   <thead>
+                   <th>User ID </th>
+                   <th>Name</th>
+                   <th>Due Date</th>
+                       
+                   </thead>
+                   <tbody>
                <%
                    String today=(new Date().getYear()+1900)+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate();
                    //out.write(today);
                    for(Payment p:Payment_db.getLapsed(today)){
                %>
-               <%=p.getName()+" "+p.getUsername()+" "+p.getEnd()%><br>
+               <tr align="center">
+                   <td >
+                        <%=p.getUsername()%>
+             
+                   </td>
+                   <td>
+                       <%=p.getName()%>
+                   </td>
+                   <td>
+                   <%=p.getEnd()%>
+                   </td>
+               </tr>
                <%
                    }
                 %>
+                   </tbody>
+               </table>
                </div>
-               
-               <div class="boxdiv">div3
-                   <form>
-               <label>CUST ID :</label>
+       </div>
+       
+                   <br><br>
+                   <div style="display: flex;justify-content: center;width: 100%;">
+               <div class="boxdiv" style="display: block;margin-left: 100px;height: 300px;">
+                   <h3>&nbsp;&nbsp;&nbsp;User Tracker</h3>
+                   <hr>
+                   <form style="margin-left: 5px;">
+               <label>USER ID :</label>
         <input  id="cust" type="text"  name="custid" placeholder="" required="" autofocus="" />
        <div id="clist"></div>
+       
+       <div style="width: 750px;height: 250px;"></div>
                    </form>
                </div>
-               
+                   </div>
+             
+               </div>
                                             </section>
                                             
             </div>
