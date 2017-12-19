@@ -48,11 +48,42 @@
       </style>
       
       <script lang="text/javascript" src="js/submenu.js"></script>
-       
+       <style>
+           .myProgress {
+    width: 75%;
+    background-color: grey;
+}
+.myBar {
+    width: 0%;
+    height: 30px;
+    background-color: green;
+}
+#skip{
+    background-color: red;
+}
+#partial{
+    background-color: #FF8E03;
+}
+
+           </style>
       <script>
       
       $(document).ready(function(){
           
+      function moveBar(eleid,progress) {
+    var elem = document.getElementById(eleid); 
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= progress) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
+      
           $(document).on("keyup","#cust",function(){
                        var lst="";
                         var custid=$(this).val();
@@ -109,7 +140,11 @@
                  
                 notattempted=totalVideo-partial-completed-skip;
                     console.log(partial/totalVideo +" "+completed/totalVideo +" "+skip/totalVideo + " "+ notattempted/totalVideo ); 
-             });
+                     moveBar("partial", (partial/totalVideo)*100 );
+                     moveBar("completed",(completed/totalVideo) *100 );
+                     moveBar("skip",(skip/totalVideo) *100);
+      
+});
                  });
                  
           $("#setid").on('change keyup',function(){
@@ -266,15 +301,32 @@
        
                    <br><br>
                    <div style="display: flex;justify-content: center;width: 100%;">
-               <div class="boxdiv" style="display: block;margin-left: 100px;height: 300px;">
+               <div class="boxdiv" style="display: block;margin-left: 100px;height: 350px;">
                    <h3>&nbsp;&nbsp;&nbsp;User Tracker</h3>
                    <hr>
-                   <form style="margin-left: 5px;">
+                   <form style="margin-left: 5px;" >
                <label>USER ID :</label>
         <input  id="cust" type="text"  name="custid" placeholder="" required="" autofocus="" />
        <div id="clist"></div>
        
-       <div style="width: 750px;height: 250px;"></div>
+       <div style="width: 100%;height: 280px;margin-left: 10%;">
+           <br>
+           <label>Completed :</label>
+           <div class="myProgress">
+            <div class="myBar" id="completed"></div>
+        </div>
+           <br>
+           <label>Skipped :</label>
+           <div class="myProgress">
+            <div class="myBar" id="skip"></div>
+        </div>
+           <br>
+           <label>Partial :</label>
+           <div class="myProgress">
+            <div class="myBar" id="partial"></div>
+        </div>
+           <br>
+       </div>
                    </form>
                </div>
                    </div>
